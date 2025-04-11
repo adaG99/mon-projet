@@ -5,6 +5,11 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProjectsModule } from './projects/projects.module';
+import { InvestmentsController } from './investments/investments.controller';
+import { InvestmentsModule } from './investments/investments.module';
+import { InterestsController } from './interests/interests.controller';
+import { InterestsModule } from './interests/interests.module';
 
 
 @Module({
@@ -23,9 +28,12 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: true,         
     }),
     UsersModule,
-    AuthModule, 
+    AuthModule,
+    ProjectsModule,
+    InvestmentsModule,
+    InterestsModule, 
   ],
-  controllers: [AppController],
+  controllers: [AppController, InvestmentsController, InterestsController],
   providers: [AppService],
 })
 export class AppModule {}
